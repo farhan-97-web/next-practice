@@ -9,7 +9,14 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
-
-export default eslintConfig;
+// eslint-disable-next-line import/no-anonymous-default-export
+export default [
+  ...compat.extends("next/core-web-vitals"),
+  {
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"], // Specify files to lint
+    ignores: ["node_modules/**", ".next/**", "out/**"], // Ignore unnecessary files
+    rules: {
+      // Add any custom rules or override defaults here
+    },
+  },
+];
